@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
+                    Toast t = Toast.makeText( getApplicationContext(), "Home :)", Toast.LENGTH_SHORT );
+                    t.show();
                     mTextMessage.setText(R.string.title_home);
                     return true;
                 case R.id.navigation_call:
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(i);
                     return true;
                 case R.id.navigation_login:
-                    mTextMessage.setText(R.string.title_notifications);
+                    mTextMessage.setText(R.string.title_login);
                     //Intent i2 = new Intent( MainActivity.getInstance(), LoginActivity.class );
                     //startActivity(i2);
                     return true;
@@ -49,14 +51,24 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        // button
+        // button 1
         Button b = (Button) findViewById(R.id.login_button);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText( view.getContext(), "Anem al login!", Toast.LENGTH_LONG );
+                Toast.makeText( view.getContext(), "Anem al login!", Toast.LENGTH_SHORT );
                 Intent i = new Intent( view.getContext(), LoginActivity.class );
                 startActivity(i);
+            }
+        });
+
+        // button 2
+        Button test_button = (Button) findViewById(R.id.test_button);
+        test_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast t = Toast.makeText( getApplicationContext(), "Toast Test :)", Toast.LENGTH_SHORT );
+                t.show();
             }
         });
     }
